@@ -1,0 +1,30 @@
+For Adding file or creating new respository.
+
+echo "# Monopoly" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/scurlej306/Monopoly.git
+git push -u origin main
+
+To check branch
+
+git status
+git branch
+git checkout <branch name>
+
+To merge to main
+
+git merge <mainDevelopment>
+
+To download and pull from git
+git fetch <name>
+git fetch -p <name>
+
+To push
+git push <name>
+(it will ask for github account)
+git add.
+git commit -m "comment"
+
