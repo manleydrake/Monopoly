@@ -34,4 +34,4 @@ def handle_custom_event(json):
 
 
 if __name__ == '__main__':
-    socketio.run(server, host="0.0.0.0", port=8080)
+    socketio.run(server, host="0.0.0.0", port=8080, debug=True)

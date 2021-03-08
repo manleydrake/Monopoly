@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>TestServer</title>
-    <link rel="shortcut icon" href="{{ url_for('static', filename='monopoly icon.png') }}">
+    <link rel="stylesheet" href="/static/teststyle.css">
+    <link rel="shortcut icon" href="/static/monopoly%20icon.png">
 </head>
 <body>
-    <h3 style="color: #ccc; font-size: 30px;">No message yet...</h3>
-    <div class="message_holder"></div>
+    <div class="chat">
+        <h3 style="color: #ccc; font-size: 30px;">No message yet...</h3>
+        <div class="message_holder"></div>
 
-    <form action="" method="POST">
-        <input class="username" placeholder="User Name"/>
-        <input class="message" placeholder="Type a message"/>
-        <input type="submit"/>
-    </form>
+        <form class="input_form" action="" method="POST">
+            <input class="username" placeholder="User Name"/>
+            <input class="message" placeholder="Type a message"/>
+            <input type="submit"/>
+        </form>
+    </div>
 
     <!-- jQuery source for the JavaScript plugins -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -41,7 +44,7 @@
             console.log(msg)
             if(typeof msg.user_name !== 'undefined') {
                 $('h3').remove()
-                $('div.message_holder').append('<div><b style="color: #000">'+msg.user_name+'</b> '+msg.message+'</div>')
+                $('div.message_holder').append('<div class="message"><b style="color: #000">'+msg.user_name+'</b> '+msg.message+'</div>')
             }
         })
     </script>
