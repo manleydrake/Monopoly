@@ -8,9 +8,8 @@
 </head>
 <body>
     <div class="chat">
-        <h3 style="color: #ccc; font-size: 30px;">No message yet...</h3>
+        <h3 class="chat_header">Player Chat</h3>
         <div class="message_holder"></div>
-
         <form class="input_form" action="" method="POST">
             <input class="message" placeholder="Type a message"/>
             <input type="submit"/>
@@ -20,37 +19,6 @@
     <!-- jQuery source for the JavaScript plugins -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.min.js" integrity="sha512-tXH7Av8en7+/hg0XwBppaCDPmpJhUXbZ+j7lNC4y+ZQpmCZQcgQN6RjkM7Irj1MUW7bZengfuTOqR4RzCC4bnA==" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        const socket = io.connect('http://' + document.domain + ':' + location.port);
-        let user_name = null;
-
-        socket.on('connect', function() {
-            let form = $('form').on('submit', function(e) {
-                e.preventDefault();
-                let user_input = $('input.message').val();
-                socket.emit('new chat', {
-                    user_name : user_name,
-                    message : user_input
-                });
-                $('input.message').val('').focus();
-            });
-        });
-
-        socket.on('new chat', function(msg) {
-            console.log(msg);
-            if(typeof msg.user_name !== 'undefined') {
-                $('h3').remove();
-                $('div.message_holder').append('<div class="message"><b style="color: #000">'+msg.user_name+'</b> '+msg.message+'</div>');
-            }
-        });
-
-        socket.on('user connect', function(data) {
-            if (user_name === null) {
-                user_name = data.player_name;
-            }
-            $('h3').remove();
-            $('div.message_holder').append('<div class="message"><b style="color: #000">'+data.user_name+'</b> '+data.message+'</div>');
-        });
-    </script>
+    <script src="/static/chatcode.js"></script>
 </body>
 </html>

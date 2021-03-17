@@ -4,7 +4,8 @@ from flask_socketio import emit, SocketIO
 server = Flask(__name__)
 server.config['SECRET KEY'] = 'svonwoudnwvob1235#'
 socketio = SocketIO(server)
-players = []
+players = [False, False, False, False, False, False]
+colors = ['#0000FF', '#FFA500', '#FF6347', '#FFFF00', '#228C22', '#800080']
 
 
 @server.route('/')
@@ -15,11 +16,18 @@ def sessions():
 @socketio.on('connect')
 def connect():
     print('User connected')
-    player_name = 'Player'+str(len(players)+1)
-    players.append(player_name)
+    player_number = players.index(False)
+    players[player_number] = True
+    player_name = 'Player'+str(player_number+1)
+    player_color = colors[player_number]
     emit(
         'user connect',
-        {'user_name': 'ANNOUNCEMENT', 'message': player_name+' connected', 'player_name': player_name},
+        {
+            'user_name': 'ANNOUNCEMENT',
+            'message': player_name+' connected',
+            'player_name': player_name,
+            'player_color': player_color
+        },
         broadcast=True
     )
 
@@ -27,7 +35,7 @@ def connect():
 @socketio.on('disconnect')
 def disconnect():
     print('User disconnected')
-    emit('my response', {'user_name': 'ANNOUNCEMENT', 'message': 'User disconnected'})
+    emit('new chat', {'user_name': 'ANNOUNCEMENT', 'message': 'User disconnected'})
 
 
 def message_received():
@@ -37,7 +45,7 @@ def message_received():
 @socketio.on('new chat')
 def handle_chat(json):
     print('received event: ' + str(json))
-    socketio.emit('new chat', json, callback=message_received)
+    emit('new chat', json, callback=message_received, broadcast=True)
 
 
 if __name__ == '__main__':
