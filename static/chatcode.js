@@ -2,6 +2,12 @@ const socket = io.connect('http://' + document.domain + ':' + location.port);
 let user_name = null;
 let user_color = null;
 
+window.addEventListener('beforeunload', (e) => {
+    e.preventDefault()
+    socket.emit('bye', {user_name: user_name});
+    e.returnValue = '';
+});
+
 socket.on('connect', function() {
     let form = $('form').on('submit', function(e) {
         e.preventDefault();
@@ -30,4 +36,10 @@ socket.on('user connect', function(data) {
     }
     $('div.message_holder').append('<div class="message"><b style="color: #000">'+data.user_name+'</b> '+data.message+'</div>');
     $('div.message_holder').scrollTop($(document).height());
+});
+
+socket.on('session full', function() {
+    if (user_name === null) {
+        window.location.href = '/static/session_full.html';
+    }
 });

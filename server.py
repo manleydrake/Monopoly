@@ -5,7 +5,7 @@ server = Flask(__name__)
 server.config['SECRET KEY'] = 'svonwoudnwvob1235#'
 socketio = SocketIO(server)
 players = [False, False, False, False, False, False]
-colors = ['#0000FF', '#FFA500', '#FF6347', '#FFFF00', '#228C22', '#800080']
+colors = ['#0000FF', '#FFA500', '#FF6347', '#FFF000', '#228C22', '#800080']
 
 
 @server.route('/')
@@ -15,6 +15,9 @@ def sessions():
 
 @socketio.on('connect')
 def connect():
+    if players.count(True) == 6:
+        emit('session full', broadcast=True)
+        return
     print('User connected')
     player_number = players.index(False)
     players[player_number] = True
@@ -34,8 +37,16 @@ def connect():
 
 @socketio.on('disconnect')
 def disconnect():
-    print('User disconnected')
-    emit('new chat', {'user_name': 'ANNOUNCEMENT', 'message': 'User disconnected'})
+    print('disconnect confirmed')
+
+
+@socketio.on('bye')
+def signoff(msg):
+    user = msg['user_name']
+    print(user+' disconnected')
+    emit('new chat', {'user_name': 'ANNOUNCEMENT', 'message': user+' disconnected'}, broadcast=True)
+    player_number = int(user[-1]) - 1
+    players[player_number] = False
 
 
 def message_received():
