@@ -2,10 +2,8 @@ const socket = io.connect('http://' + document.domain + ':' + location.port);
 let user_name = null;
 let user_color = null;
 
-window.addEventListener('beforeunload', (e) => {
-    e.preventDefault()
+window.addEventListener('beforeunload', () => {
     socket.emit('bye', {user_name: user_name});
-    e.returnValue = '';
 });
 
 socket.on('connect', function() {
