@@ -1,10 +1,10 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_socketio import emit, SocketIO
 
 server = Flask(__name__)
 server.config['SECRET KEY'] = 'svonwoudnwvob1235#'
 socketio = SocketIO(server)
-players = [False, False, False, False, False, False]
+players = []
 colors = ['#0000FF', '#FFA500', '#FF6347', '#FFF000', '#228C22', '#800080']
 
 
@@ -15,14 +15,16 @@ def sessions():
 
 @socketio.on('connect')
 def connect():
-    if players.count(True) == 6:
+    # This if block is a placeholder for now, as we are only implementing one game at a time.
+    # This can be used to manage multiple game sessions in the future if that is desired.
+    if len(players) == 6:
         emit('session full', broadcast=True)
         return
     print('User connected')
-    player_number = players.index(False)
-    players[player_number] = True
-    player_name = 'Player'+str(player_number+1)
-    player_color = colors[player_number]
+    player_number_base = players.index(None) if None in players else len(players)
+    players[player_number_base] = request.sid
+    player_name = 'Player'+str(player_number_base+1)
+    player_color = colors[player_number_base]
     emit(
         'user connect',
         {
@@ -45,8 +47,8 @@ def signoff(msg):
     user = msg['user_name']
     print(user+' disconnected')
     emit('new chat', {'user_name': 'ANNOUNCEMENT', 'message': user+' disconnected'}, broadcast=True)
-    player_number = int(user[-1]) - 1
-    players[player_number] = False
+    player_number = players.index(request.sid)
+    players[player_number] = None
 
 
 def message_received():
