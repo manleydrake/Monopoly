@@ -2,10 +2,6 @@ const socket = io.connect('http://' + document.domain + ':' + location.port);
 let user_name = null;
 let user_color = null;
 
-window.addEventListener('beforeunload', () => {
-    socket.emit('bye', {user_name: user_name});
-});
-
 socket.on('connect', function() {
     let form = $('form').on('submit', function(e) {
         e.preventDefault();
