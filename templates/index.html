@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="/static/monopoly%20icon.png">
 </head>
 <body>
+    <div class="container">
     <div class="chat">
         <h3 class="chat_header">Player Chat</h3>
         <div class="message_holder"></div>
@@ -20,5 +21,93 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.min.js" integrity="sha512-tXH7Av8en7+/hg0XwBppaCDPmpJhUXbZ+j7lNC4y+ZQpmCZQcgQN6RjkM7Irj1MUW7bZengfuTOqR4RzCC4bnA==" crossorigin="anonymous"></script>
     <script src="/static/chatcode.js"></script>
-</body>
+
+        <table id="board" style="display: table;">
+            <tbody>
+                <tr>
+                    <td class="cell board-corner" id="cell20"><img src="/static/Images/free_parking_icon.png" alt="FP">Free Parking</td>
+                    <td class="cell board-top" id="cell21">Kentucky Avenue</td>
+                    <td class="cell board-top" id="cell22">Chance</td>
+                    <td class="cell board-top" id="cell23">Indiana Avenue</td>
+                    <td class="cell board-top" id="cell24">Illinois Avenue</td>
+                    <td class="cell board-top" id="cell25">B & O Railroad</td>
+                    <td class="cell board-top" id="cell26">Atlantic Avenue</td>
+                    <td class="cell board-top" id="cell27">Ventnor Avenue</td>
+                    <td class="cell board-top" id="cell28">Water Works</td>
+                    <td class="cell board-top" id="cell29">Marvin Gardens</td>
+                    <td class="cell board-corner" id="cell30">Go To Jail</td>
+                </tr>
+
+                <tr>
+                    <td class="cell board-left" id="cell19">test2</td>
+                    <td colspan="9" class="board-center"></td>
+                    <td class="cell board-right" id="cell31">...</td>
+                </tr>
+
+                <tr>
+                    <td class="cell board-left" id="cell18">...</td>
+                    <td colspan="9" class="board-center"></td>
+                    <td class="cell board-right" id="cell32">...</td>
+                </tr>
+
+                <tr>
+                    <td class="cell board-left" id="cell17">...</td>
+                    <td colspan="9" class="board-center"></td>
+                    <td class="cell board-right" id="cell33">...</td>
+                </tr>
+
+                <tr>
+                    <td class="cell board-left" id="cell16">...</td>
+                    <td colspan="9" class="board-center"></td>
+                    <td class="cell board-right" id="cell34">...</td>
+                </tr>
+
+                <tr>
+                    <td class="cell board-left" id="cell15">...</td>
+                    <td colspan="9" class="board-center"></td>
+                    <td class="cell board-right" id="cell35">...</td>
+                </tr>
+
+                <tr>
+                    <td class="cell board-left" id="cell14">...</td>
+                    <td colspan="9" class="board-center"></td>
+                    <td class="cell board-right" id="cell36">...</td>
+                </tr>
+
+                <tr>
+                    <td class="cell board-left" id="cell13">...</td>
+                    <td colspan="9" class="board-center"></td>
+                    <td class="cell board-right" id="cell37">...</td>
+                </tr>
+
+                <tr>
+                    <td class="cell board-left" id="cell12">...</td>
+                    <td colspan="9" class="board-center"></td>
+                    <td class="cell board-right" id="cell38">...</td>
+                </tr>
+
+                <tr>
+                    <td class="cell board-left" id="cell11">...</td>
+                    <td colspan="9" class="board-center"></td>
+                    <td class="cell board-right" id="cell39">...</td>
+                </tr>
+
+                <tr>
+                    <td class="cell board-corner" id="cell10">Jail</td>
+                    <td class="cell board-bottom" id="cell9">...</td>
+                    <td class="cell board-bottom" id="cell8">...</td>
+                    <td class="cell board-bottom" id="cell7">...</td>
+                    <td class="cell board-bottom" id="cell6">...</td>
+                    <td class="cell board-bottom" id="cell5">...</td>
+                    <td class="cell board-bottom" id="cell4">...</td>
+                    <td class="cell board-bottom" id="cell3">...</td>
+                    <td class="cell board-bottom" id="cell2">...</td>
+                    <td class="cell board-bottom" id="cell1">...</td>
+                    <td class="cell board-corner" id="cell0">GO</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    </body>
 </html>

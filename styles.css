@@ -27,6 +27,7 @@ td {
 	vertical-align: bottom;
 	background-repeat: no-repeat;
 	background-size: auto 40px;
+	border: 10px solid black;
 }
 
 .board-center {
