@@ -3,4 +3,7 @@ Jacob Curley, Matthew Scott, Khe Kit Shum
 
 README file
 
-Install Flask, have stable connection between host and user.
+Installed Flask, have stable connection between host and user.
+Setup server using socket.io.
+Setup Chatbox with players, maximum number of player is 6.
+Created Monopoly Display.
