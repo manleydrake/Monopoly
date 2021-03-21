@@ -82,16 +82,40 @@
 }
 
 .board-left {
-    width: 102px;
-    height: 72px;
+    width: 72px;
+    height: 102px;
 }
 
 .board-right {
-    width: 102px;
-    height: 72px;
+    width: 72px;
+    height: 102px;
 }
 
-#cell20 {
-    display: flex;
-    flex-direction: column;
+#jail {
+    border: 1px solid black;
+    text-align: center;
+}
+
+#eletric {
+    float: top;
+}
+
+#go {
+    width: 102px;
+    height: 84px;
+}
+
+#fp {
+    width: 102px;
+    height: 84px;
+}
+
+#police {
+    width: 102px;
+    height: 84px;
+}
+
+#incometax{
+    width: 53px;
+    height: 50px;
 }
