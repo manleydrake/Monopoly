@@ -1,6 +1,29 @@
 Team 4
-Jacob Curley, Matthew Scott, Khe Kit Shum
+Authors: Jacob Curley, Matthew Scott, Khe Kit Shum
 
 README file
 
-Install Flask, have stable connection between host and user.
+This project is the Capstone to the Computer Science major at Drake University for the above authors. 
+
+The goal of this project is to create a web-hosted Monopoly game that can be played synchronously by multiple remote users in a web browser.
+
+To run this project:
+
+-Have a server with Python 3.6, Flask, Flask-SocketIO, and eventlet libraries installed
+-Have the server route incoming HTTP connections to port 8080
+-Execute the server.py file from the command line
+
+
+Copyright (C) 2021  Jacob Curley, Matthew Scott, Khe Kit Shum
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published
+by the Free Software Foundation, either version 3 of the License, or any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
