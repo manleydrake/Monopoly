@@ -12,20 +12,22 @@ players = [None, None, None, None, None, None]
 
 @SERVER.route('/')
 def sessions():
+    # Method to handle the default initial connection by a user over HTTP
     return render_template('index.html')
 
 
 @SOCKETIO.on('connect')
 def connect():
+    # Method to handle the socket connection from a user after the user has rendered the index.html
+
     # This if block is a placeholder for now, as we are only implementing one game at a time.
     # This can be used to manage multiple game sessions in the future if that is desired.
     if None not in players:
         emit('session full')
         return
-    else:
-        print('User connected')
-        player_number_base = players.index(None)
-        players[player_number_base] = request.sid
+    print('User connected')
+    player_number_base = players.index(None)
+    players[player_number_base] = request.sid
     player_name = 'Player'+str(player_number_base+1)
     player_color = COLORS[player_number_base]
     emit(
@@ -42,6 +44,8 @@ def connect():
 
 @SOCKETIO.on('disconnect')
 def disconnect():
+    # Method to handle disconnect events
+    # Frees up a space in the game and removes the old user from the list of players
     if request.sid in players:
         user_number = players.index(request.sid)
         user = 'Player'+str(user_number+1)
@@ -53,6 +57,7 @@ def disconnect():
 
 @SOCKETIO.on('new chat')
 def handle_chat(json):
+    # Method used to send events to and from each player in the chat. Also a framework for the rest of the user actions
     print('received event: ' + str(json))
     emit('new chat', json, broadcast=True)
 
