@@ -1,0 +1,62 @@
+body {
+	background: #FFFFFF;
+	margin: 0px;
+	min-width: 1075px;
+}
+
+td {
+	font-size: 12px;
+	font-family: arial, sans-serif;
+	border: 1px solid black;
+	text-align: center;
+}
+
+#board {
+	display: none;
+	border: 2px solid black;
+	border-spacing: 3px;
+	margin: 25px;
+	float: left;
+}
+
+.cell {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	padding: 0px;
+	vertical-align: bottom;
+	background-repeat: no-repeat;
+	background-size: auto 40px;
+	border: 10px solid black;
+}
+
+.board-center {
+	width: 675px;
+	border: none;
+	vertical-align: bottom;
+	background-repeat: no-repeat;
+	background-size: auto 40px;
+}
+
+.board-corner {
+	width: 102px;
+	height: 102px;
+}
+
+.board-top {
+	width: 72px;
+	height: 102px;
+}
+
+.board-bottom {
+	width: 72px;
+	height: 102px;
+}
+
+.board-left {
+	width: 102px;
+	height: 72px;
+}
+
+.board-right {
+	

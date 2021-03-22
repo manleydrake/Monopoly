@@ -36,4 +36,66 @@
 b {
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
+
+.container {
+    display:flex;
+    flex-direction: row;
+}
+
+#board {
+    display: none;
+    border: 2px solid black;
+    border-spacing: 3px;
+    margin: 25px;
+    float: left;
+}
+
+.cell {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    padding: 0px;
+    vertical-align: bottom;
+    background-repeat: no-repeat;
+    background-size: auto 40px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.board-center {
+    width: 675px;
+    border: none;
+    vertical-align: bottom;
+    background-repeat: no-repeat;
+    background-size: auto 40px;
+}
+
+.board-corner {
+    width: 102px;
+    height: 102px;
+}
+
+.board-top {
+    width: 72px;
+    height: 102px;
+}
+
+.board-bottom {
+    width: 72px;
+    height: 102px;
+}
+
+.board-left {
+    width: 102px;
+    height: 72px;
+}
+
+.board-right {
+    width: 102px;
+    height: 72px;
+}
+
+#cell20 {
+    display: flex;
+    flex-direction: column;
 }
