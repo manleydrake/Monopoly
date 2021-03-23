@@ -31,3 +31,9 @@ socket.on('user connect', function(data) {
     $('div.message_holder').append('<div class="message"><b style="color: #000">'+data.user_name+'</b> '+data.message+'</div>');
     $('div.message_holder').scrollTop($(document).height());
 });
+
+socket.on('session full', function() {
+    if (user_name === null) {
+        window.location.href = '/static/session_full.html';
+    }
+});
