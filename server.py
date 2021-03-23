@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from flask_socketio import emit, SocketIO
+import monopoly_game
 
 SERVER = Flask(__name__)
 SERVER.config['SECRET KEY'] = 'svonwoudnwvob1235#'
@@ -60,6 +61,40 @@ def handle_chat(json):
     # Method used to send events to and from each player in the chat. Also a framework for the rest of the user actions
     print('received event: ' + str(json))
     emit('new chat', json, broadcast=True)
+
+
+@SOCKETIO.on('start game')
+def start():
+    """ TODO build out the start_game function in monopoly_game and send data to users """
+    monopoly_game.start_game()
+
+
+@SOCKETIO.on('roll dice')
+def roll():
+    roll_int, die_file_1, die_file_2 = monopoly_game.roll_dice()
+    print('rolled: ', roll_int, die_file_1, die_file_2)
+    emit('roll result', {'roll_int': roll_int, 'die_file_1': die_file_1, 'die_file_2': die_file_2}, broadcast=True)
+
+
+@SOCKETIO.on('chance')
+def chance():
+    """ TODO build out the chance function in monopoly_game """
+    """ TODO get the returned values from the chance function in monopoly_game and send result to users """
+
+
+@SOCKETIO.on('community chest')
+def community_chest():
+    """ TODO build out the community_chest function in monopoly_game """
+    """ TODO get the returned values and send result to users """
+
+
+@SOCKETIO.on('pay')
+def pay(data):
+    """ TODO build out the pay function in monopoly_game """
+    """ TODO fix the below line so that the correct information is received from monopoly_game.pay() """
+    some_result = monopoly_game.pay(data.amount, data.payer, data.recipient)
+    """ TODO emit the result to the users """
+    return some_result
 
 
 if __name__ == '__main__':
