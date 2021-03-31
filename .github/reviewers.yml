@@ -1,0 +1,20 @@
+reviewers:
+  defaults:
+    - team4
+
+groups:
+  team4:
+    - scurlej306
+    - matthewscott014
+    - KheKit
+
+per-author:
+  scurlej306:
+    - matthewscott014
+    - KheKit
+  matthewscott014:
+    - KheKit
+    - scurlej306
+  KheKit:
+    - scurlej306
+    - matthewscott014
