@@ -3,6 +3,11 @@ Authors: Jacob Curley, Matthew Scott, Khe Kit Shum
 
 README file
 
+Installed Flask, have stable connection between host and user.
+Setup server using socket.io.
+Setup Chatbox with players, maximum number of player is 6.
+Created Monopoly Display.
+
 This project is the Capstone to the Computer Science major at Drake University for the above authors. 
 
 The goal of this project is to create a web-hosted Monopoly game that can be played synchronously by multiple remote users in a web browser.
