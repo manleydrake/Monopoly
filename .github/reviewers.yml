@@ -6,15 +6,15 @@ groups:
   team4:
     - scurlej306
     - matthewscott014
-    - KheKit
+    - Khe Kit Shum
 
 per-author:
   scurlej306:
     - matthewscott014
-    - KheKit
+    - Khe Kit Shum
   matthewscott014:
-    - KheKit
+    - Khe Kit Shum
     - scurlej306
-  KheKit:
+  Khe Kit Shum:
     - scurlej306
     - matthewscott014
