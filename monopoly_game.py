@@ -9,8 +9,8 @@ def start_game():
 def roll_dice():
     die1 = randint(1, 6)
     die2 = randint(1, 6)
-    die_file_1 = '/static/Images/Die_'+str(die1)+'.png'
-    die_file_2 = '/static/Images/Die_'+str(die2)+'.png'
+    die_file_1 = '/static/Images/dice_'+str(die1)+'.png'
+    die_file_2 = '/static/Images/dice_'+str(die2)+'.png'
     return die1+die2, die_file_1, die_file_2
 
 
