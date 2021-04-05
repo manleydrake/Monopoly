@@ -2,19 +2,19 @@ reviewers:
   defaults:
     - team4
 
-groups:
-  team4:
-    - scurlej306
-    - matthewscott014
-    - Khe Kit Shum
+  groups:
+    team4:
+      - scurlej306
+      - matthewscott014
+      - Khe Kit Shum
 
-per-author:
-  scurlej306:
-    - matthewscott014
-    - Khe Kit Shum
-  matthewscott014:
-    - Khe Kit Shum
-    - scurlej306
-  Khe Kit Shum:
-    - scurlej306
-    - matthewscott014
+  per-author:
+    scurlej306:
+      - matthewscott014
+      - Khe Kit Shum
+    matthewscott014:
+      - Khe Kit Shum
+      - scurlej306
+    Khe Kit Shum:
+      - scurlej306
+      - matthewscott014
