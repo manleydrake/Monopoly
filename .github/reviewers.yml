@@ -6,15 +6,15 @@ reviewers:
     team4:
       - scurlej306
       - matthewscott014
-      - "Khe Kit Shum"
+      - KheKit
 
   per-author:
     scurlej306:
       - matthewscott014
-      - "Khe Kit Shum"
+      - KheKit
     matthewscott014:
-      - "Khe Kit Shum"
+      - KheKit
       - scurlej306
-    "Khe Kit Shum":
+    KheKit:
       - scurlej306
       - matthewscott014
