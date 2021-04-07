@@ -1,4 +1,4 @@
-/* Chat css */
+/* Chat CSS Start */
 .chat {
     display: flex;
     flex-direction: column;
@@ -43,8 +43,9 @@ b {
     display:flex;
     flex-direction: row;
 }
+/* Chat CSS End */
 
-/*Board css */
+/* Monopoly Board css */
 #board {
     display: none;
     border: 2px solid black;
@@ -127,10 +128,76 @@ b {
     height: 50px;
 }
 
-div.cellcolor {
+div.cellcolor1 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 10px;
+    background-color: #6c2415 ;
+}
+
+div.cellcolor2 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 10px;
+    background-color: #98d6e2 ;
+}
+
+div.cellcolor3 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 10px;
+    background-color:  #f36ad4;
+}
+
+div.cellcolor4 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 10px;
+    background-color: #fe921f;
+}
+
+div.cellcolor5 {
     position: absolute;
     top: 0;
     width: 100%;
     height: 10px;
     background-color: #DC143C;
 }
+
+div.cellcolor6 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 10px;
+    background-color: #fefe1f;
+}
+
+div.cellcolor7 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 10px;
+    background-color: #11a42e;
+}
+
+div.cellcolor8 {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 10px;
+    background-color: #0e25a4;
+}
+
+div.jailcell {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%;
+    height: 40px;
+}
+
+/* Monopoly Board End */
