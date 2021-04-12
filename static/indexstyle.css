@@ -46,6 +46,7 @@ b {
 /* Chat CSS End */
 
 /* Monopoly Board css */
+
 #board {
     display: none;
     border: 2px solid black;
@@ -80,12 +81,12 @@ b {
 }
 
 .board-top {
-    width: 72px;
+    width: 75px;
     height: 102px;
 }
 
 .board-bottom {
-    width: 72px;
+    width: 75px;
     height: 102px;
 }
 
@@ -197,6 +198,20 @@ div.jailcell {
     right: 0;
     width: 80%;
     height: 40px;
+}
+
+div.injail {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%;
+    height: 20px;
+}
+
+div.spotp {
+    border: 2px solid black;
+    width: 95%;
+    height: 50px;
 }
 
 /* Monopoly Board End */

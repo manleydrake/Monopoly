@@ -23,7 +23,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.min.js" integrity="sha512-tXH7Av8en7+/hg0XwBppaCDPmpJhUXbZ+j7lNC4y+ZQpmCZQcgQN6RjkM7Irj1MUW7bZengfuTOqR4RzCC4bnA==" crossorigin="anonymous"></script>
     <script src="/static/chatcode.js"></script>
 
-    <!-- Monopoly Board Start -->
+        <!-- Monopoly Board Start -->
         <table id="board" style="display: table;">
             <tbody>
                 <tr>
@@ -33,6 +33,7 @@
                     </td>
                     <td class="cell board-top" id="cell21">
                         <div class="cellcolor5"></div>
+                        <div class="spotp"></div>
                         Kentucky Avenue $220</td>
                     <td class="cell board-top" id="cell22">
                         <div><img src="/static/Images/chance.png" id="chance" alt="Chance"></div>
@@ -155,6 +156,9 @@
 
                 <tr>
                     <td class="cell board-corner" id="cell10">
+                        <div class="injail">
+                            test
+                        </div>
                         <div class="jailcell">
                             <img src="/static/Images/behind_bars.png" id="jailbars" alt="Bars">
                         </div>
@@ -190,7 +194,6 @@
                         <img src="/static/Images/go_arrow2.png" id="go" alt="GO">
                         GO</td>
                 </tr>
-
             </tbody>
         </table>
         <!-- Monopoly Board End -->
