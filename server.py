@@ -66,7 +66,7 @@ def handle_chat(json):
 @SOCKETIO.on('start game')
 def start():
     """ TODO build out the start_game function in monopoly_game and send data to users """
-    monopoly_game.start_game()
+    monopoly_game.start_game(players)
 
 
 @SOCKETIO.on('roll dice')
