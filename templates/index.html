@@ -9,19 +9,14 @@
 </head>
 <body>
     <div class="container">
-    <div class="chat">
-        <h3 class="chat_header">Player Chat</h3>
-        <div class="message_holder"></div>
-        <form class="input_form" action="" method="POST">
-            <input class="message" placeholder="Type a message"/>
-            <input type="submit"/>
-        </form>
-    </div>
-
-    <!-- jQuery source for the JavaScript plugins -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.min.js" integrity="sha512-tXH7Av8en7+/hg0XwBppaCDPmpJhUXbZ+j7lNC4y+ZQpmCZQcgQN6RjkM7Irj1MUW7bZengfuTOqR4RzCC4bnA==" crossorigin="anonymous"></script>
-    <script src="/static/chatcode.js"></script>
+        <div class="chat">
+            <h3 class="chat-header">Player Chat</h3>
+            <div class="message-holder"></div>
+            <form class="input-form" action="" method="POST">
+                <input class="message" placeholder="Type a message"/>
+                <input type="submit"/>
+            </form>
+        </div>
 
         <!-- Monopoly Board Start -->
         <table id="board" style="display: table;">
@@ -200,6 +195,15 @@
             </tbody>
         </table>
         <!-- Monopoly Board End -->
+        <div class="card-display">
+            <div class="card-container"></div>
+            <button type="button" class="chance-button">Draw card</button>
+        </div>
     </div>
     </body>
+
+<!-- jQuery source for the JavaScript plugins -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.1/socket.io.min.js" integrity="sha512-tXH7Av8en7+/hg0XwBppaCDPmpJhUXbZ+j7lNC4y+ZQpmCZQcgQN6RjkM7Irj1MUW7bZengfuTOqR4RzCC4bnA==" crossorigin="anonymous"></script>
+    <script src="/static/chatcode.js"></script>
 </html>
