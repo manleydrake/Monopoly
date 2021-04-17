@@ -201,7 +201,6 @@ div.jailcell {
 }
 
 div.injail {
-    position: absolute;
     top: 0;
     right: 0;
     width: 80%;
@@ -211,7 +210,13 @@ div.injail {
 div.spotp {
     border: 2px solid black;
     width: 95%;
-    height: 50px;
+    height: 30px;
+}
+
+div.spotc {
+    border: 2px solid black;
+    width: 95%;
+    height: 20px;
 }
 
 /* Monopoly Board End */
