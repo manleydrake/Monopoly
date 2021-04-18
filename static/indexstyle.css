@@ -45,7 +45,36 @@ b {
 }
 /* Chat CSS End */
 
-/* Monopoly Board css */
+/* Player Money stat Start
+
+#moneybar {
+    float: right;
+    border: 0px solid black;
+    background-color: white;
+    margin: 15px;
+    border-radius: 5px;
+    display: none;
+    z-index: 14;
+    position: relative;
+    cursor: default;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#moneybar table {
+    font-weight: bold;
+    border-spacing: 1px;
+}
+
+#moneybarwrap {
+    min-width: 135px;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+Player Moneu stat End */
+
+/* Monopoly Board css Start*/
 
 #board {
     display: none;
