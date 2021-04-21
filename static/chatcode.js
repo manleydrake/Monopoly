@@ -47,3 +47,16 @@ $('button.chance-button').on('click', function(e) {
     e.preventDefault();
     socket.emit('chance');
 });
+
+socket.on('roll result', function(json) {
+    console.log('Roll result: ' + json.roll_int);
+    $('img.Die-1').replaceWith('<img src="' + json.die_file_1 + '" class="Die-1" width="50" height="50">');
+    $('img.Die-2').replaceWith('<img src="' + json.die_file_2 + '" class="Die-2" width="50" height="50">');
+    $('div.message-holder').append('<div class="message"><b style="color: #000">'+json.user_name+'</b> '+json.message+'</div>');
+    $('div.message-holder').scrollTop($(document).height());
+});
+
+$('button.dice-button').on('click', function(e) {
+    e.preventDefault();
+    socket.emit('roll dice');
+});

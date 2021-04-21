@@ -223,7 +223,7 @@ div.spotp {
 
 /* Monopoly Board End */
 
-.card-display {
+.game-display {
     z-index: 2;
     position: absolute;
     border: 2px solid black;

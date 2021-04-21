@@ -71,9 +71,12 @@ def start():
 
 @SOCKETIO.on('roll dice')
 def roll():
+    player = 'Player'+str(players.index(request.sid)+1)
     roll_int, die_file_1, die_file_2 = monopoly_game.roll_dice()
-    print('rolled: ', roll_int, die_file_1, die_file_2)
-    emit('roll result', {'roll_int': roll_int, 'die_file_1': die_file_1, 'die_file_2': die_file_2}, broadcast=True)
+    print(player+' rolled: ', roll_int, die_file_1, die_file_2)
+    message = player+' rolled '+str(roll_int)
+    emit('roll result', {'user_name': ANNOUNCEMENT, 'message': message,
+                         'die_file_1': die_file_1, 'die_file_2': die_file_2}, broadcast=True)
 
 
 @SOCKETIO.on('chance')
