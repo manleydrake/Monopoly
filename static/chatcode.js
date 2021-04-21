@@ -37,3 +37,15 @@ socket.on('session full', function() {
         window.location.href = '/static/session_full.html';
     }
 });
+
+
+socket.on('roll result', function(json) {
+    $('img.Die-1').replaceWith('<img src="' + json.die_file_1 + '" class="Die-1" width="50" height="50">');
+    $('img.Die-2').replaceWith('<img src="' + json.die_file_2 + '" class="Die-2" width="50" height="50">');
+
+})
+
+function func() {
+    console.log('dice rolled')
+    socket.emit('roll dice')
+    }
