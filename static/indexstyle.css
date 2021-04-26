@@ -250,3 +250,40 @@ div.spotc {
 }
 
 /* Monopoly Board End */
+
+/* Player Stat and money Start */
+.moneybarcell1 {
+    border: 3px solid;
+    border-color: #0000FF;
+    background-color: white;
+}
+
+.moneybarcell2 {
+    border: 3px solid;
+    border-color: #FFA500;
+    background-color: white;
+}
+
+.moneybarcell3 {
+    border: 3px solid;
+    border-color: #FF6347;
+    background-color: white;
+}
+
+.moneybarcell4 {
+    border: 3px solid;
+    border-color: #FFF000;
+    background-color: white;
+}
+
+.moneybarcell5 {
+    border: 3px solid;
+    border-color: #228C22;
+    background-color: white;
+}
+
+.moneybarcell6 {
+    border: 3px solid;
+    border-color: #800080;
+    background-color: white;
+}
