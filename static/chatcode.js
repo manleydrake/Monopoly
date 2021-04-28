@@ -68,7 +68,8 @@ socket.on('start game', function(data) {
                                 '<div><span id="p'+x+'moneyname" >'+data.players[i]+'</span>:</div>' +
                                 '<div>$<span id="p'+x+'money">1500</span></div>' +
                             '</td>' +
-                        '</tr>')
+                        '</tr>'
+        );
     }
 });
 
