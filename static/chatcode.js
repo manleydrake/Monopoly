@@ -60,7 +60,7 @@ socket.on('start game', function(data) {
         socket.emit('roll dice');
     });
     for (i = 0; i < data.players.length; i++) {
-        $('#cell0').append('<div class="'+data.players[i]+'-piece gamePiece" style="background-color: '+data.colors[i]+'"></div>')
+        $('#cell0 > div.spotc').append('<div class="'+data.players[i]+'-piece gamePiece" style="background-color: '+data.colors[i]+'"></div>')
         let x = i+1
         $('#moneytable').append('<tr id="moneybarrow'+x+'" class="money-bar-row">' +
                             '<td class="moneybararrowcell"><img src="/static/Images/arrow.png" id="p'+x+'arrow" class="money-bar-arrow" alt=">"/></td>' +
@@ -86,6 +86,7 @@ socket.on('roll result', function(json) {
     $('div.message-holder').scrollTop($(document).height());
     if (json.is_movement) {
         $('div.'+json.player+'-piece').remove();
-        $('#cell'+json.space).append('<div class="'+json.player+'-piece gamePiece" style="background-color: '+json.color+'"></div>');
+        $('#cell'+json.space+' > div.spotp').append('<div class="'+json.player+'-piece gamePiece" style="background-color: '+json.color+'"></div>');
+        $('#cell'+json.space+' > div.spotc').append('<div class="'+json.player+'-piece gamePiece" style="background-color: '+json.color+'"></div>');
     }
 });

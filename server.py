@@ -86,9 +86,10 @@ def roll():
     color = COLORS[players.index(request.sid)]
     roll_int, die_file_1, die_file_2, is_movement, space = GAME.roll_dice()
     if GAME.turn_stage == 'move':
-        GAME.current_player += 1
-        if GAME.current_player == len(GAME.PLAYERS):
+        if GAME.current_player == len(GAME.PLAYERS)-1:
             GAME.current_player = 0
+        else:
+            GAME.current_player += 1
     message = player+' rolled '+str(roll_int)
     emit('roll result', {'user_name': ANNOUNCEMENT, 'message': message,
                          'is_movement': is_movement, 'player': player, 'space': space, 'color': color,
