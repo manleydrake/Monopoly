@@ -9,13 +9,66 @@
 </head>
 <body>
     <div class="container">
-        <div class="chat">
-            <h3 class="chat-header">Player Chat</h3>
-            <div class="message-holder"></div>
-            <form class="input-form" action="" method="POST">
-                <input class="message" placeholder="Type a message"/>
-                <input type="submit"/>
-            </form>
+        <div class="container2">
+            <div class="chat">
+                <h3 class="chat_header">Player Chat</h3>
+                <div class="message-holder"></div>
+                <form class="input_form" action="" method="POST">
+                    <input class="message" placeholder="Type a message"/>
+                    <input type="submit"/>
+                </form>
+            </div>
+
+        <!-- Players Money Start -->
+            <div id="moneybarwrap">
+                <div id="moneybar">
+                    <table id="moneytable">
+                        <tr id="moneybarrow1" class="money-bar-row">
+                            <td class="moneybararrowcell"><img src="/static/Images/arrow.png" id="p1arrow" class="money-bar-arrow" alt=">"/></td>
+                            <td id="p1moneybar" class="moneybarcell1">
+                                <div><span id="p1moneyname" >Player 1</span>:</div>
+                                <div>$<span id="p1money">1500</span></div>
+                            </td>
+                        </tr>
+                        <tr id="moneybarrow2" class="money-bar-row">
+                            <td class="moneybararrowcell"><img src="/static/Images/arrow.png" id="p2arrow" class="money-bar-arrow" alt=">" /></td>
+                            <td id="p2moneybar" class="moneybarcell2">
+                                <div><span id="p2moneyname" >Player 2</span>:</div>
+                                <div>$<span id="p2money">1500</span></div>
+                            </td>
+                        </tr>
+                        <tr id="moneybarrow3" class="money-bar-row">
+                            <td class="moneybararrowcell"><img src="/static/Images/arrow.png" id="p3arrow" class="money-bar-arrow" alt=">" /></td>
+                            <td id="p3moneybar" class="moneybarcell3">
+                                <div><span id="p3moneyname" >Player 3</span>:</div>
+                                <div>$<span id="p3money">1500</span></div>
+                            </td>
+                        </tr>
+                        <tr id="moneybarrow4" class="money-bar-row">
+                            <td class="moneybararrowcell"><img src="/static/Images/arrow.png" id="p4arrow" class="money-bar-arrow" alt=">" /></td>
+                            <td id="p4moneybar" class="moneybarcell4">
+                                <div><span id="p4moneyname" >Player 4</span>:</div>
+                                <div>$<span id="p4money">1500</span></div>
+                            </td>
+                        </tr>
+                        <tr id="moneybarrow5" class="money-bar-row">
+                            <td class="moneybararrowcell"><img src="/static/Images/arrow.png" id="p5arrow" class="money-bar-arrow" alt=">" /></td>
+                            <td id="p5moneybar" class="moneybarcell5">
+                                <div><span id="p5moneyname" >Player 5</span>:</div>
+                                <div>$<span id="p5money">1500</span></div>
+                            </td>
+                        </tr>
+                        <tr id="moneybarrow6" class="money-bar-row">
+                            <td class="moneybararrowcell"><img src="/static/Images/arrow.png" id="p6arrow" class="money-bar-arrow" alt=">" /></td>
+                            <td id="p6moneybar" class="moneybarcell6">
+                                <div><span id="p6moneyname" >Player 6</span>:</div>
+                                <div>$<span id="p6money">1500</span></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        <!-- Players Money End -->
         </div>
 
         <!-- Monopoly Board Start -->
@@ -24,41 +77,48 @@
             <tbody>
                 <tr>
                     <td class="cell board-corner" id="cell20">
+                        <div class="spotc"></div>
                         <div><img src="/static/Images/free_parking.png" id="freeparking" alt="Free Parking"></div>
                         Free Parking
                     </td>
                     <td class="cell board-top" id="cell21">
                         <div class="cellcolor5"></div>
-                        <div class="spotp">test</div>
+                        <div class="spotp"></div>
                         Kentucky Avenue $220</td>
                     <td class="cell board-top" id="cell22">
-                        <div class="spotc">test</div>
-                        <div><img src="/static/Images/chance.png" id="chance1" alt="Chance"></div>
+                        <div class="spotc"></div>
+                        <div><img src="/static/Images/chance.png" id="chance" alt="Chance"></div>
                         Chance</td>
                     <td class="cell board-top" id="cell23">
                         <div class="cellcolor5"></div>
-                        <div class="spotp">test</div>
+                        <div class="spotp"></div>
                         Indiana Avenue $220</td>
                     <td class="cell board-top" id="cell24">
                         <div class="cellcolor5"></div>
-                        <div class="spotp">test</div>
+                        <div class="spotp"></div>
                         Illinois Avenue $240</td>
                     <td class="cell board-top" id="cell25">
+                        <div class="spotc"></div>
                         <div><img src="/static/Images/train.png" id="train1" alt="Train"></div>
                         B & O Railroad $200</td>
                     <td class="cell board-top" id="cell26">
+                        <div class="spotp"></div>
                         <div class="cellcolor6"></div>
                         Atlantic Avenue $260</td>
                     <td class="cell board-top" id="cell27">
                         <div class="cellcolor6"></div>
+                        <div class="spotp"></div>
                         Ventnor Avenue $260</td>
                     <td class="cell board-top" id="cell28">
+                        <div class="spotc"></div>
                         <img src="/static/Images/water.png" id="water" alt="Water Works">
                         Water Works <br> $150</td>
                     <td class="cell board-top" id="cell29">
-                        <div class="cellcolor6"></div>    
+                        <div class="cellcolor6"></div>
+                        <div class="spotp"></div>    
                         Marvin Gardens <br> $280</td>
                     <td class="cell board-corner" id="cell30">
+                        <div class="spotc"></div>
                         <img src="/static/Images/police.png" id="police" alt="police">
                         Go To Jail</td>
                 </tr>
@@ -66,29 +126,35 @@
                 <tr>
                     <td class="cell board-left" id="cell19">
                         <div class="cellcolor4"></div>
+                        <div class="spotp"></div>
                         New York Avenue <br> $200</td>
                     <td colspan="9" class="board-center"></td>
                     <td class="cell board-right" id="cell31">
                         <div class="cellcolor7"></div>
+                        <div class="spotp"></div>
                         Pacific Avenue $300</td>
                 </tr>
 
                 <tr>
                     <td class="cell board-left" id="cell18">
                         <div class="cellcolor4"></div>
+                        <div class="spotp"></div>
                         Tennessee Avenue <br> $180</td>
                     <td colspan="9" class="board-center"></td>
                     <td class="cell board-right" id="cell32">
                         <div class="cellcolor7"></div>
+                        <div class="spotp"></div>
                         North Carolina Avenue <br> $300</td>
                 </tr>
 
                 <tr>
                     <td class="cell board-left" id="cell17">
+                        <div class="spotc"></div>
                         <img src="/static/Images/community_chest.png" id="CC1" alt="CC">
                         Community Chest</td>
                     <td colspan="9" class="board-center"></td>
                     <td class="cell board-right" id="cell33">
+                        <div class="spotc"></div>
                         <img src="/static/Images/community_chest.png" id="CC2" alt="CC">
                         Community Chest</td>
                 </tr>
@@ -96,19 +162,23 @@
                 <tr>
                     <td class="cell board-left" id="cell16">
                         <div class="cellcolor4"></div>
+                        <div class="spotp"></div>
                         St. James Place $180</td>
                     <td colspan="9" class="board-center"></td>
                     <td class="cell board-right" id="cell34">
                         <div class="cellcolor7"></div>
+                        <div class="spotp"></div>
                         Pennsylvania Avenue <br> $320</td>
                 </tr>
 
                 <tr>
                     <td class="cell board-left" id="cell15">
+                        <div class="spotc"></div>
                         <div><img src="/static/Images/train.png" id="train2" alt="Train"></div>
                         Pennsylvania Railroad <br> $200</td>
                     <td colspan="9" class="board-center"></td>
                     <td class="cell board-right" id="cell35">
+                        <div class="spotc"></div>
                         <div><img src="/static/Images/train.png" id="train3" alt="Train"></div>
                         Short Line $200</td>
                 </tr>
@@ -116,9 +186,11 @@
                 <tr>
                     <td class="cell board-left" id="cell14">
                         <div class="cellcolor3"></div>
+                        <div class="spotp"></div>
                         Virginia Avenue <br> $160</td>
                     <td colspan="9" class="board-center"></td>
                     <td class="cell board-right" id="cell36">
+                        <div class="spotc"></div>
                         <div><img src="/static/Images/chance.png" id="chance2" alt="Chance"></div>
                         Chance</td>
                 </tr>
@@ -126,19 +198,23 @@
                 <tr>
                     <td class="cell board-left" id="cell13">
                         <div class="cellcolor3"></div>
+                        <div class="spotp"></div>
                         States Avenue $140</td>
                     <td colspan="9" class="board-center"></td>
                     <td class="cell board-right" id="cell37">
                         <div class="cellcolor8"></div>
+                        <div class="spotp"></div>
                         Park Place $350</td>
                 </tr>
 
                 <tr>
                     <td class="cell board-left" id="cell12">
+                        <div class="spotc"></div>
                         <div><img src="/static/Images/electric.png" id="electric" alt="Electric Company"></div>
                         Electric Company <br> $150</td>
                     <td colspan="9" class="board-center"></td>
                     <td class="cell board-right" id="cell38">
+                        <div class="spotc"></div>
                         <img src="/static/Images/luxury_tax.png" id="luxurytax"  alt="Luxury Tax">
                         Luxury Tax PAY $100</td>
                 </tr>
@@ -146,56 +222,68 @@
                 <tr>
                     <td class="cell board-left" id="cell11">
                         <div class="cellcolor3"></div>
+                        <div class="spotp"></div>
                         St. Charles Place <br> $140</td>
                     <td colspan="9" class="board-center"></td>
                     <td class="cell board-right" id="cell39">
                         <div class="cellcolor8"></div>
+                        <div class="spotp"></div>
                         Boardwalk $400</td>
                 </tr>
 
                 <tr>
                     <td class="cell board-corner" id="cell10">
-                        <div class="injail">
-                            test
-                        </div>
+                        <div class="injail"></div>
+                        <div class="visit"></div>
                         <div class="jailcell">
                             <img src="/static/Images/behind_bars.png" id="jailbars" alt="Bars">
                         </div>
                         Just Visiting</td>
                     <td class="cell board-bottom" id="cell9">
                         <div class="cellcolor2"></div>
+                        <div class="spotp"></div>
                         Connecticut Avenue $120</td>
                     <td class="cell board-bottom" id="cell8">
                         <div class="cellcolor2"></div>
+                        <div class="spotp"></div>
                         Vermont Avenue $100</td>
                     <td class="cell board-bottom" id="cell7">
+                        <div class="spotc"></div>
                         <img src="/static/Images/chance.png" id="chance3" alt="Chance">
                         Chance</td>
                     <td class="cell board-bottom" id="cell6">
                         <div class="cellcolor2"></div>
+                        <div class="spotp"></div>
                         Oriental Avenue $100</td>
                     <td class="cell board-bottom" id="cell5">
+                        <div class="spotc"></div>
                         <div><img src="/static/Images/train.png" id="train4" alt="Train"></div>
                         Reading Railroad $200</td>
                     <td class="cell board-bottom" id="cell4">
+                        <div class="spotc"></div>
                         <img src="/static/Images/income_tax.png" id="incometax"  alt="Income Tax">
                         Income Tax PAY $200</td>
                     <td class="cell board-bottom" id="cell3">
                         <div class="cellcolor1"></div>
+                        <div class="spotp"></div>
                         Baltic Avenue $60</td>
                     <td class="cell board-bottom" id="cell2">
+                        <div class="spotc"></div>
                         <img src="/static/Images/community_chest.png" alt="CC">
                         Community Chest</td>
                     <td class="cell board-bottom" id="cell1">
                         <div class="cellcolor1"></div>
+                        <div class="spotp"></div>
                         Mediterranean Avenue <br> $60</td>
                     <td class="cell board-corner" id="cell0">
+                        <div class="spotc"></div>
                         <img src="/static/Images/go_arrow2.png" id="go" alt="GO">
                         GO</td>
                 </tr>
             </tbody>
         </table>
         <!-- Monopoly Board End -->
+
         <div class="game-display">
             <div class="card-container"></div>
             <button type="button" class="chance-button">Draw card</button>

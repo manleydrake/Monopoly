@@ -46,6 +46,7 @@ b {
 }
 /* Chat CSS End */
 
+/* Monopoly Board css Start*/
 
 .board-div {
     display: flex;
@@ -207,21 +208,65 @@ div.jailcell {
     height: 40px;
 }
 
+div.visit {
+    width: 80%;
+    height: 20px;
+}
+
 div.injail {
-    position: absolute;
-    top: 0;
-    right: 0;
     width: 80%;
     height: 20px;
 }
 
 div.spotp {
-    border: 2px solid black;
     width: 95%;
-    height: 50px;
+    height: 30px;
+}
+
+div.spotc {
+    width: 95%;
+    height: 20px;
 }
 
 /* Monopoly Board End */
+
+/* Player Stat and money Start */
+.moneybarcell1 {
+    border: 3px solid;
+    border-color: #0000FF;
+    background-color: white;
+}
+
+.moneybarcell2 {
+    border: 3px solid;
+    border-color: #FFA500;
+    background-color: white;
+}
+
+.moneybarcell3 {
+    border: 3px solid;
+    border-color: #FF6347;
+    background-color: white;
+}
+
+.moneybarcell4 {
+    border: 3px solid;
+    border-color: #FFF000;
+    background-color: white;
+}
+
+.moneybarcell5 {
+    border: 3px solid;
+    border-color: #228C22;
+    background-color: white;
+}
+
+.moneybarcell6 {
+    border: 3px solid;
+    border-color: #800080;
+    background-color: white;
+}
+/* Player Stat and money End*/
 
 .game-display {
     z-index: 2;
