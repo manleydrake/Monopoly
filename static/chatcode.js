@@ -61,6 +61,14 @@ socket.on('start game', function(data) {
     });
     for (i = 0; i < data.players.length; i++) {
         $('#cell0').append('<div class="'+data.players[i]+'-piece gamePiece" style="background-color: '+data.colors[i]+'"></div>')
+        let x = i+1
+        $('#moneytable').append('<tr id="moneybarrow'+x+'" class="money-bar-row">' +
+                            '<td class="moneybararrowcell"><img src="/static/Images/arrow.png" id="p'+x+'arrow" class="money-bar-arrow" alt=">"/></td>' +
+                            '<td id="p'+x+'moneybar" class="moneybarcell'+x+'">' +
+                                '<div><span id="p'+x+'moneyname" >'+data.players[i]+'</span>:</div>' +
+                                '<div>$<span id="p'+x+'money">1500</span></div>' +
+                            '</td>' +
+                        '</tr>')
     }
 });
 
