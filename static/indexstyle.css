@@ -221,11 +221,15 @@ div.injail {
 div.spotp {
     width: 95%;
     height: 30px;
+    display: flex;
+    flex-direction: row;
 }
 
 div.spotc {
     width: 95%;
     height: 20px;
+    display: flex;
+    flex-direction: row;
 }
 
 /* Monopoly Board End */
