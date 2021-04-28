@@ -18,8 +18,8 @@ socket.on('connect', function() {
 socket.on('new chat', function(msg) {
     console.log(msg);
     if(typeof msg.user_name !== 'undefined') {
-        $('div.message_holder').append('<div class="message"><b style="color: '+msg.color+'">'+msg.user_name+'</b> '+msg.message+'</div>');
-        $('div.message_holder').scrollTop($(document).height());
+        $('div.message-holder').append('<div class="message"><b style="color: '+msg.color+'">'+msg.user_name+'</b> '+msg.message+'</div>');
+        $('div.message-holder').scrollTop($(document).height());
     }
 });
 
@@ -28,12 +28,35 @@ socket.on('user connect', function(data) {
         user_name = data.player_name;
         user_color = data.player_color;
     }
-    $('div.message_holder').append('<div class="message"><b style="color: #000">'+data.user_name+'</b> '+data.message+'</div>');
-    $('div.message_holder').scrollTop($(document).height());
+    $('div.message-holder').append('<div class="message"><b style="color: #000">'+data.user_name+'</b> '+data.message+'</div>');
+    $('div.message-holder').scrollTop($(document).height());
 });
 
 socket.on('session full', function() {
     if (user_name === null) {
         window.location.href = '/static/session_full.html';
     }
+});
+
+socket.on('chance', function(data) {
+    console.log(data);
+    $('div.card-container').replaceWith('<div class="card-container">'+data.card_content+'</div>');
+});
+
+$('button.chance-button').on('click', function(e) {
+    e.preventDefault();
+    socket.emit('chance');
+});
+
+socket.on('roll result', function(json) {
+    console.log('Roll result: ' + json.roll_int);
+    $('img.Die-1').replaceWith('<img src="' + json.die_file_1 + '" class="Die-1" width="50" height="50">');
+    $('img.Die-2').replaceWith('<img src="' + json.die_file_2 + '" class="Die-2" width="50" height="50">');
+    $('div.message-holder').append('<div class="message"><b style="color: #000">'+json.user_name+'</b> '+json.message+'</div>');
+    $('div.message-holder').scrollTop($(document).height());
+});
+
+$('button.dice-button').on('click', function(e) {
+    e.preventDefault();
+    socket.emit('roll dice');
 });

@@ -12,11 +12,11 @@
     border-radius: 10px;
 }
 
-.chat_header {
+.chat-header {
     align-self: center;
 }
 
-.message_holder {
+.message-holder {
     border-style: solid;
     border-width: 2px;
     display: flex;
@@ -28,9 +28,10 @@
 
 .message {
     padding-left: 5px;
+    width: 374px;
 }
 
-.input_form {
+.input-form {
     margin: 10px;
 }
 
@@ -45,36 +46,13 @@ b {
 }
 /* Chat CSS End */
 
-/* Player Money stat Start
-
-#moneybar {
-    float: right;
-    border: 0px solid black;
-    background-color: white;
-    margin: 15px;
-    border-radius: 5px;
-    display: none;
-    z-index: 14;
-    position: relative;
-    cursor: default;
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-#moneybar table {
-    font-weight: bold;
-    border-spacing: 1px;
-}
-
-#moneybarwrap {
-    min-width: 135px;
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-Player Moneu stat End */
-
 /* Monopoly Board css Start*/
+
+.board-div {
+    display: flex;
+    justify-content: center;
+}
+/* Monopoly Board css */
 
 #board {
     display: none;
@@ -82,6 +60,7 @@ Player Moneu stat End */
     border-spacing: 3px;
     margin: 25px;
     float: left;
+    z-index: 1;
 }
 
 .cell {
@@ -286,4 +265,14 @@ div.spotc {
     border: 3px solid;
     border-color: #800080;
     background-color: white;
+}
+/* Player Stat and money End*/
+
+.game-display {
+    z-index: 2;
+    position: absolute;
+    border: 2px solid black;
+    width: 20%;
+    height: 30%;
+    margin-top: 35%;
 }
