@@ -1,5 +1,7 @@
 from random import randint
 from spaces_info import get_spaces_info
+from cards_info import get_chance
+from cards_info import get_community_chest
 
 
 class Space:
@@ -54,7 +56,9 @@ def roll_dice():
 def chance():
     """ TODO create Card class and an initializer for the chance cards """
     """ TODO create a result that this function can return to the server """
-    return
+    chance_list = cards_info.get_chance()
+    card = chance_list[randint(1,17) - 1]
+    return card
 
 
 def community_chest():

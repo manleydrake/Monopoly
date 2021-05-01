@@ -45,7 +45,18 @@ socket.on('roll result', function(json) {
 
 })
 
+socket.on('chance result', function(json){
+     /* display monopoly_game.chance() */
+    $('img.Chance').replaceWith('card_text_here class="Chance" width="50" height="50">');
+
+})
+
 function func() {
     console.log('dice rolled')
     socket.emit('roll dice')
+    }
+
+function func2() {
+    console.log('chance')
+    socket.emit('chance')
     }

@@ -80,6 +80,8 @@ def roll():
 def chance():
     """ TODO build out the chance function in monopoly_game """
     """ TODO get the returned values from the chance function in monopoly_game and send result to users """
+    chance_card = monopoly_game.chance()
+    emit('chance result', {'chance_card': chance_card}, broadcast=True)
 
 
 @SOCKETIO.on('community chest')
