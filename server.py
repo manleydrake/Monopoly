@@ -7,6 +7,7 @@ SERVER.config['SECRET KEY'] = 'svonwoudnwvob1235#'
 SOCKETIO = SocketIO(SERVER)
 ANNOUNCEMENT = 'ANNOUNCEMENT'
 COLORS = ['#0000FF', '#FFA500', '#FF6347', '#FFF000', '#228C22', '#800080']
+GAME = monopoly_game.Game()
 
 players = [None, None, None, None, None, None]
 
@@ -66,17 +67,33 @@ def handle_chat(json):
 @SOCKETIO.on('start game')
 def start():
     """ TODO build out the start_game function in monopoly_game and send data to users """
-    monopoly_game.start_game(players)
+    playing_players = []
+    for player in players:
+        if player is not None:
+            playing_players.append(player)
+    GAME.start_game(playing_players)
+    user_names = []
+    for i in range(len(playing_players)):
+        user_names.append('Player'+str(i+1))
+    emit('start game', {'players': user_names, 'colors': COLORS}, broadcast=True)
 
 
 @SOCKETIO.on('roll dice')
 def roll():
+    if players.index(request.sid) != GAME.current_player:
+        return
     player = 'Player'+str(players.index(request.sid)+1)
-    roll_int, die_file_1, die_file_2 = monopoly_game.roll_dice()
-    print(player+' rolled: ', roll_int, die_file_1, die_file_2)
+    color = COLORS[players.index(request.sid)]
+    roll_int, die_file_1, die_file_2, is_movement, space = GAME.roll_dice()
+    if GAME.turn_stage == 'move':
+        if GAME.current_player == len(GAME.PLAYERS)-1:
+            GAME.current_player = 0
+        else:
+            GAME.current_player += 1
     message = player+' rolled '+str(roll_int)
     emit('roll result', {'user_name': ANNOUNCEMENT, 'message': message,
-                         'die_file_1': die_file_1, 'die_file_2': die_file_2}, broadcast=True)
+                         'is_movement': is_movement, 'player': player, 'space': space, 'color': color,
+                         'die_file_1': die_file_1, 'die_file_2': die_file_2, 'roll_int': roll_int}, broadcast=True)
 
 
 @SOCKETIO.on('chance')
@@ -97,7 +114,7 @@ def community_chest():
 def pay(data):
     """ TODO build out the pay function in monopoly_game """
     """ TODO fix the below line so that the correct information is received from monopoly_game.pay() """
-    some_result = monopoly_game.pay(data.amount, data.payer, data.recipient)
+    some_result = GAME.pay(data.amount, data.payer, data.recipient)
     """ TODO emit the result to the users """
     return some_result
 
