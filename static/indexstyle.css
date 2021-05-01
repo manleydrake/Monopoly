@@ -12,11 +12,11 @@
     border-radius: 10px;
 }
 
-.chat_header {
+.chat-header {
     align-self: center;
 }
 
-.message_holder {
+.message-holder {
     border-style: solid;
     border-width: 2px;
     display: flex;
@@ -28,9 +28,10 @@
 
 .message {
     padding-left: 5px;
+    width: 374px;
 }
 
-.input_form {
+.input-form {
     margin: 10px;
 }
 
@@ -45,6 +46,12 @@ b {
 }
 /* Chat CSS End */
 
+/* Monopoly Board css Start*/
+
+.board-div {
+    display: flex;
+    justify-content: center;
+}
 /* Monopoly Board css */
 
 #board {
@@ -53,6 +60,7 @@ b {
     border-spacing: 3px;
     margin: 25px;
     float: left;
+    z-index: 1;
 }
 
 .cell {
@@ -200,18 +208,81 @@ div.jailcell {
     height: 40px;
 }
 
+div.visit {
+    width: 80%;
+    height: 20px;
+}
+
 div.injail {
-    position: absolute;
-    top: 0;
-    right: 0;
     width: 80%;
     height: 20px;
 }
 
 div.spotp {
-    border: 2px solid black;
     width: 95%;
-    height: 50px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+div.spotc {
+    width: 95%;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
 }
 
 /* Monopoly Board End */
+
+/* Player Stat and money Start */
+.moneybarcell1 {
+    border: 3px solid;
+    border-color: #0000FF;
+    background-color: white;
+}
+
+.moneybarcell2 {
+    border: 3px solid;
+    border-color: #FFA500;
+    background-color: white;
+}
+
+.moneybarcell3 {
+    border: 3px solid;
+    border-color: #FF6347;
+    background-color: white;
+}
+
+.moneybarcell4 {
+    border: 3px solid;
+    border-color: #FFF000;
+    background-color: white;
+}
+
+.moneybarcell5 {
+    border: 3px solid;
+    border-color: #228C22;
+    background-color: white;
+}
+
+.moneybarcell6 {
+    border: 3px solid;
+    border-color: #800080;
+    background-color: white;
+}
+/* Player Stat and money End*/
+
+.game-display {
+    z-index: 2;
+    position: absolute;
+    border: 2px solid black;
+    width: 20%;
+    height: 30%;
+    margin-top: 35%;
+}
+
+.gamePiece {
+    z-index: 3;
+    width: 20px;
+    height: 20px;
+}
