@@ -1,5 +1,7 @@
 from random import randint
 from spaces_info import get_spaces_info
+from cards_info import get_chance
+from cards_info import get_community_chest
 
 
 class Space:
@@ -19,7 +21,6 @@ class Player:
         self.money = 1500
         self.properties = []
         self.space_index = 0
-
 
 class Game:
     BOARD = []
@@ -57,14 +58,16 @@ class Game:
         return die1+die2, die_file_1, die_file_2, is_movement, self.PLAYERS[self.current_player].space_index
 
     def chance(self):
-        """ TODO create Card class and an initializer for the chance cards """
-        """ TODO create a result that this function can return to the server """
-        return
+        chance_list = get_chance()
+        card = chance_list[randint(1,17) - 1]
+        return card
 
     def community_chest(self):
         """ TODO create Card class and an initializer for the community_chest cards """
         """ TODO create a result that this function can return to the server """
-        return
+        comchest_list = get_community_chest()
+        card = comchest_list[randint(1,17) - 1]
+        return card
 
     def pay(self, amount, payer, recipient):
         """ TODO build out this function so that the amount goes from the payer to the recipient """

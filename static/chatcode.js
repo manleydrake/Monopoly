@@ -45,7 +45,8 @@ $('button.start-button').on('click', function(e) {
 
 socket.on('start game', function(data) {
     $('button.start-button').replaceWith('<div class="card-container"></div>'+
-        '<button type="button" class="chance-button">Draw card</button>'+
+        '<button type="button" class="chance-button">Draw chance</button>'+
+        '<button type="button" class="community-chest-button">Draw community chest</button>'+
         '<!-- dice roll button and display --><div class="dice"><div class="dice-image-holder">'+
         '<img src="/static/Images/dice_1.png" class="Die-1" width="50" height="50">'+
         '<img src="/static/Images/dice_1.png" class="Die-2" width="50" height="50"></div>'+
@@ -54,6 +55,11 @@ socket.on('start game', function(data) {
     $('button.chance-button').on('click', function(e) {
         e.preventDefault();
         socket.emit('chance');
+    });
+
+    $('button.community-chest-button').on('click', function(e) {
+        e.preventDefault();
+        socket.emit('community chest');
     });
     $('button.dice-button').on('click', function(e) {
         e.preventDefault();
@@ -73,10 +79,6 @@ socket.on('start game', function(data) {
     }
 });
 
-socket.on('chance', function(data) {
-    console.log(data);
-    $('div.card-container').replaceWith('<div class="card-container">'+data.card_content+'</div>');
-});
 
 socket.on('roll result', function(json) {
     console.log('Roll result: ' + json.roll_int);
@@ -91,3 +93,25 @@ socket.on('roll result', function(json) {
         $('#cell'+json.space+' > div.visit').append('<div class="'+json.player+'-piece gamePiece" style="background-color: '+json.color+'"></div>');
     }
 });
+
+socket.on('chance result', function(json){
+     /* display monopoly_game.chance() */
+    console.log(json);
+    $('div.card-container').replaceWith('<div class="card-container">'+json.card_content+'</div>');
+})
+
+socket.on('community chest result', function(json){
+     /* display monopoly_game.chance() */
+    console.log(json);
+    $('div.card-container').replaceWith('<div class="card-container">'+json.card_content+'</div>');
+})
+
+function func() {
+    console.log('dice rolled')
+    socket.emit('roll dice')
+    }
+
+function func2() {
+    console.log('chance')
+    socket.emit('chance')
+    }
