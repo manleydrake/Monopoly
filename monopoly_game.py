@@ -44,6 +44,7 @@ class Game:
     turn_stage = None
     current_player = None
     latest_roll = 0
+    doubles = False
 
     def init_board(self):
         for space in get_spaces_info():
@@ -81,6 +82,7 @@ class Game:
         self.latest_roll = die1 + die2
         die_file_1 = '/static/Images/dice_'+str(die1)+'.png'
         die_file_2 = '/static/Images/dice_'+str(die2)+'.png'
+        self.doubles = False
         if self.turn_stage == 'move':
             if player.in_jail:
                 if player.jail_cards > 0:
@@ -96,14 +98,18 @@ class Game:
                         self.next_player()
                         return self.latest_roll, die_file_1, die_file_2, player.space_index, player.in_jail
                 else:
-                    player.money -= 50
+                    pay(50, player, Player('bank'))
                     player.in_jail = False
                     player.jail_rolls = 0
+            elif die1 == die2:
+                self.doubles = True
             self.move_player(player)
+            if player.in_jail:
+                self.doubles = False
         elif self.turn_stage == 'utility roll':
             pay(10*self.latest_roll, player, self.PLAYERS[self.BOARD[player.space_index].owner])
             self.turn_stage = 'move'
-        if self.turn_stage == 'move':
+        if self.turn_stage == 'move' and not self.doubles:
             self.next_player()
         return self.latest_roll, die_file_1, die_file_2, player.space_index, player.in_jail
 
@@ -129,14 +135,14 @@ class Game:
         if len(self.CHANCE) == 0:
             self.set_chance()
         player_position, in_jail = self.enact_card(card)
-        return card[0], player_position, in_jail
+        return card, player_position, in_jail
 
     def community_chest(self):
         card = self.COM_CHEST.pop()
         if len(self.COM_CHEST) == 0:
             self.set_com_chest()
         player_position, in_jail = self.enact_card(card)
-        return card[0], player_position, in_jail
+        return card, player_position, in_jail
 
     def enact_card(self, card):
         player = self.PLAYERS[self.current_player]
@@ -200,7 +206,8 @@ class Game:
 
         if self.turn_stage != 'utility roll':
             self.turn_stage = 'move'
-            self.next_player()
+            if not self.doubles:
+                self.next_player()
         return player.space_index, player.in_jail
 
     def landed_on_space(self, player):
@@ -217,12 +224,13 @@ class Game:
                 pay(space.buy_price, player, Player('bank'))
                 player.properties.append(player.space_index)
                 if player.space_index in [5, 15, 25, 35]:
-                    railroads = [space]
+                    railroads = -1
                     for index in player.properties:
-                        if index != player.space_index and index in [5, 15, 25, 35]:
-                            railroads.append(self.BOARD[index])
-                    for item in railroads:
-                        item.num_houses = len(railroads) - 1
+                        if index in [5, 15, 25, 35]:
+                            railroads += 1
+                    for index in [5, 15, 25, 35]:
+                        if index in player.properties:
+                            self.BOARD[index].num_houses = railroads
         elif space.name in tax_spaces:
             pay(space.house_multipliers[space.num_houses], player, Player('bank'))
         else:

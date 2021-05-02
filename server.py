@@ -94,25 +94,47 @@ def roll():
 def move_piece(user_id, space, in_jail):
     player = 'Player'+str(players.index(user_id)+1)
     color = COLORS[players.index(user_id)]
+    location = GAME.BOARD[space].name
+    if in_jail:
+        message = player+' is In Jail!'
+    else:
+        message = player+' landed on '+location
     emit('move piece', {'player': player, 'space': space, 'color': color, 'in_jail': in_jail}, broadcast=True)
+    emit('new chat', {'user_name': ANNOUNCEMENT, 'message': message}, broadcast=True)
+    update_money()
+
+
+def update_money():
+    user_names = []
+    money = []
+    for i in range(len(GAME.PLAYERS)):
+        user_names.append('Player'+str(i+1))
+        money.append(GAME.PLAYERS[i].money)
+    emit('update money', {'players': user_names, 'money': money})
 
 
 @SOCKETIO.on('chance')
 def chance():
     if players.index(request.sid) != GAME.current_player or GAME.turn_stage != 'chance':
         return
-    chance_card_text, player_position, in_jail = GAME.chance()
-    emit('chance result', {'card_content': chance_card_text}, broadcast=True)
-    move_piece(request.sid, player_position, in_jail)
+    chance_card, player_position, in_jail = GAME.chance()
+    emit('chance result', {'card_content': chance_card[0]}, broadcast=True)
+    if chance_card[1] in ['go to space', 'go to jail', 'movement']:
+        move_piece(request.sid, player_position, in_jail)
+    else:
+        update_money()
 
 
 @SOCKETIO.on('community chest')
 def community_chest():
     if players.index(request.sid) != GAME.current_player or GAME.turn_stage != 'community chest':
         return
-    comchest_card_text, player_position, in_jail = GAME.community_chest()
-    emit('community chest result', {'card_content': comchest_card_text}, broadcast=True)
-    move_piece(request.sid, player_position, in_jail)
+    comchest_card, player_position, in_jail = GAME.community_chest()
+    emit('community chest result', {'card_content': comchest_card[0]}, broadcast=True)
+    if comchest_card[1] in ['go to space', 'go to jail']:
+        move_piece(request.sid, player_position, in_jail)
+    else:
+        update_money()
 
 
 @SOCKETIO.on('pay')

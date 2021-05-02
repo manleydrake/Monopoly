@@ -67,7 +67,7 @@ socket.on('start game', function(data) {
     });
     for (i = 0; i < data.players.length; i++) {
         $('#cell0 > div.spotc').append('<div class="'+data.players[i]+'-piece gamePiece" style="background-color: '+data.colors[i]+'"></div>')
-        let x = i+1
+        const x = i+1
         $('#moneytable').append('<tr id="moneybarrow'+x+'" class="money-bar-row">' +
                             '<td class="moneybararrowcell"><img src="/static/Images/arrow.png" id="p'+x+'arrow" class="money-bar-arrow" alt=">"/></td>' +
                             '<td id="p'+x+'moneybar" class="moneybarcell'+x+'">' +
@@ -76,6 +76,13 @@ socket.on('start game', function(data) {
                             '</td>' +
                         '</tr>'
         );
+    }
+});
+
+socket.on('update money', function(json) {
+    for (i = 0; i < json.players.length; i++) {
+        const x = i + 1
+        $('#p'+x+'money').replaceWith('<span id="p'+x+'money">'+json.money[i]+'</span>')
     }
 });
 
