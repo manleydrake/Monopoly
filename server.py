@@ -100,8 +100,8 @@ def roll():
 def chance():
     """ TODO build out the chance function in monopoly_game """
     """ TODO get the returned values from the chance function in monopoly_game and send result to users """
-    chance_card = monopoly_game.chance()
-    emit('chance result', {'chance_card': chance_card}, broadcast=True)
+    chance_card = GAME.chance()
+    emit('chance result', {'card_content': chance_card}, broadcast=True)
 
 
 
@@ -109,6 +109,8 @@ def chance():
 def community_chest():
     """ TODO build out the community_chest function in monopoly_game """
     """ TODO get the returned values and send result to users """
+    comchest_card = GAME.community_chest()
+    emit('community chest result', {'card_content': comchest_card}, broadcast=True)
 
 
 @SOCKETIO.on('pay')
