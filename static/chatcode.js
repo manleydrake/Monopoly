@@ -86,32 +86,27 @@ socket.on('roll result', function(json) {
     $('img.Die-2').replaceWith('<img src="' + json.die_file_2 + '" class="Die-2" width="50" height="50">');
     $('div.message-holder').append('<div class="message"><b style="color: #000">'+json.user_name+'</b> '+json.message+'</div>');
     $('div.message-holder').scrollTop($(document).height());
-    if (json.is_movement) {
-        $('div.'+json.player+'-piece').remove();
-        $('#cell'+json.space+' > div.spotp').append('<div class="'+json.player+'-piece gamePiece" style="background-color: '+json.color+'"></div>');
-        $('#cell'+json.space+' > div.spotc').append('<div class="'+json.player+'-piece gamePiece" style="background-color: '+json.color+'"></div>');
-        $('#cell'+json.space+' > div.visit').append('<div class="'+json.player+'-piece gamePiece" style="background-color: '+json.color+'"></div>');
-    }
 });
 
 socket.on('chance result', function(json){
      /* display monopoly_game.chance() */
     console.log(json);
     $('div.card-container').replaceWith('<div class="card-container">'+json.card_content+'</div>');
-})
+});
 
 socket.on('community chest result', function(json){
      /* display monopoly_game.chance() */
     console.log(json);
     $('div.card-container').replaceWith('<div class="card-container">'+json.card_content+'</div>');
-})
+});
 
-function func() {
-    console.log('dice rolled')
-    socket.emit('roll dice')
+socket.on('move piece', function(json){
+    $('div.'+json.player+'-piece').remove();
+    if (json.in_jail) {
+        $('#cell'+json.space+' > div.injail').append('<div class="'+json.player+'-piece gamePiece" style="background-color: '+json.color+'"></div>');
+    } else {
+        $('#cell'+json.space+' > div.spotp').append('<div class="'+json.player+'-piece gamePiece" style="background-color: '+json.color+'"></div>');
+        $('#cell'+json.space+' > div.spotc').append('<div class="'+json.player+'-piece gamePiece" style="background-color: '+json.color+'"></div>');
+        $('#cell'+json.space+' > div.visit').append('<div class="'+json.player+'-piece gamePiece" style="background-color: '+json.color+'"></div>');
     }
-
-function func2() {
-    console.log('chance')
-    socket.emit('chance')
-    }
+});

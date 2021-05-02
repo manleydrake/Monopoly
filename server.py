@@ -66,7 +66,6 @@ def handle_chat(json):
 
 @SOCKETIO.on('start game')
 def start():
-    """ TODO build out the start_game function in monopoly_game and send data to users """
     playing_players = []
     for player in players:
         if player is not None:
@@ -83,41 +82,42 @@ def roll():
     if players.index(request.sid) != GAME.current_player:
         return
     player = 'Player'+str(players.index(request.sid)+1)
-    color = COLORS[players.index(request.sid)]
-    roll_int, die_file_1, die_file_2, is_movement, space = GAME.roll_dice()
-    if GAME.turn_stage == 'move':
-        if GAME.current_player == len(GAME.PLAYERS)-1:
-            GAME.current_player = 0
-        else:
-            GAME.current_player += 1
+    is_movement = GAME.turn_stage == 'move'
+    roll_int, die_file_1, die_file_2, space, in_jail = GAME.roll_dice()
     message = player+' rolled '+str(roll_int)
     emit('roll result', {'user_name': ANNOUNCEMENT, 'message': message,
-                         'is_movement': is_movement, 'player': player, 'space': space, 'color': color,
                          'die_file_1': die_file_1, 'die_file_2': die_file_2, 'roll_int': roll_int}, broadcast=True)
+    if is_movement:
+        move_piece(request.sid, space, in_jail)
+
+
+def move_piece(user_id, space, in_jail):
+    player = 'Player'+str(players.index(user_id)+1)
+    color = COLORS[players.index(user_id)]
+    emit('move piece', {'player': player, 'space': space, 'color': color, 'in_jail': in_jail}, broadcast=True)
 
 
 @SOCKETIO.on('chance')
 def chance():
-    """ TODO build out the chance function in monopoly_game """
-    """ TODO get the returned values from the chance function in monopoly_game and send result to users """
-    chance_card = GAME.chance()
-    emit('chance result', {'card_content': chance_card}, broadcast=True)
-
+    if players.index(request.sid) != GAME.current_player or GAME.turn_stage != 'chance':
+        return
+    chance_card_text, player_position, in_jail = GAME.chance()
+    emit('chance result', {'card_content': chance_card_text}, broadcast=True)
+    move_piece(request.sid, player_position, in_jail)
 
 
 @SOCKETIO.on('community chest')
 def community_chest():
-    """ TODO build out the community_chest function in monopoly_game """
-    """ TODO get the returned values and send result to users """
-    comchest_card = GAME.community_chest()
-    emit('community chest result', {'card_content': comchest_card}, broadcast=True)
+    if players.index(request.sid) != GAME.current_player or GAME.turn_stage != 'community chest':
+        return
+    comchest_card_text, player_position, in_jail = GAME.community_chest()
+    emit('community chest result', {'card_content': comchest_card_text}, broadcast=True)
+    move_piece(request.sid, player_position, in_jail)
 
 
 @SOCKETIO.on('pay')
 def pay(data):
-    """ TODO build out the pay function in monopoly_game """
-    """ TODO fix the below line so that the correct information is received from monopoly_game.pay() """
-    some_result = GAME.pay(data.amount, data.payer, data.recipient)
+    some_result = monopoly_game.pay(data.amount, data.payer, data.recipient)
     """ TODO emit the result to the users """
     return some_result
 
