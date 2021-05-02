@@ -88,5 +88,6 @@ socket.on('roll result', function(json) {
         $('div.'+json.player+'-piece').remove();
         $('#cell'+json.space+' > div.spotp').append('<div class="'+json.player+'-piece gamePiece" style="background-color: '+json.color+'"></div>');
         $('#cell'+json.space+' > div.spotc').append('<div class="'+json.player+'-piece gamePiece" style="background-color: '+json.color+'"></div>');
+        $('#cell'+json.space+' > div.visit').append('<div class="'+json.player+'-piece gamePiece" style="background-color: '+json.color+'"></div>');
     }
 });
