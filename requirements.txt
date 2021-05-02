@@ -1,0 +1,4 @@
+# Requirements for running this software
+Flask
+flask-socketio
+eventlet
