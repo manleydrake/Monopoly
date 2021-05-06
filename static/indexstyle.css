@@ -71,7 +71,7 @@ b {
     vertical-align: bottom;
     background-repeat: no-repeat;
     background-size: auto 40px;
-    border: 1px solid black;
+    border: medium solid black;
     text-align: center;
 }
 
@@ -136,7 +136,7 @@ b {
     font-size: 9pt;
 }
 
-div.cellcolor1 {
+.cellcolor1 {
     position: absolute;
     top: 0;
     width: 100%;
@@ -144,7 +144,7 @@ div.cellcolor1 {
     background-color: #6c2415 ;
 }
 
-div.cellcolor2 {
+.cellcolor2 {
     position: absolute;
     top: 0;
     width: 100%;
@@ -152,7 +152,7 @@ div.cellcolor2 {
     background-color: #98d6e2 ;
 }
 
-div.cellcolor3 {
+.cellcolor3 {
     position: absolute;
     top: 0;
     width: 100%;
@@ -160,7 +160,7 @@ div.cellcolor3 {
     background-color:  #f36ad4;
 }
 
-div.cellcolor4 {
+.cellcolor4 {
     position: absolute;
     top: 0;
     width: 100%;
@@ -168,7 +168,7 @@ div.cellcolor4 {
     background-color: #fe921f;
 }
 
-div.cellcolor5 {
+.cellcolor5 {
     position: absolute;
     top: 0;
     width: 100%;
@@ -176,7 +176,7 @@ div.cellcolor5 {
     background-color: #DC143C;
 }
 
-div.cellcolor6 {
+.cellcolor6 {
     position: absolute;
     top: 0;
     width: 100%;
@@ -184,7 +184,7 @@ div.cellcolor6 {
     background-color: #fefe1f;
 }
 
-div.cellcolor7 {
+.cellcolor7 {
     position: absolute;
     top: 0;
     width: 100%;
@@ -192,7 +192,7 @@ div.cellcolor7 {
     background-color: #11a42e;
 }
 
-div.cellcolor8 {
+.cellcolor8 {
     position: absolute;
     top: 0;
     width: 100%;
@@ -200,7 +200,7 @@ div.cellcolor8 {
     background-color: #0e25a4;
 }
 
-div.jailcell {
+.jailcell {
     position: absolute;
     top: 0;
     right: 0;
@@ -208,24 +208,46 @@ div.jailcell {
     height: 40px;
 }
 
-div.visit {
+.visit {
     width: 80%;
     height: 20px;
+    display: flex;
+    flex-direction: row;
 }
 
-div.injail {
+.visit:after {
+    position: absolute;
+    z-index: -1;
+    content: "Just Visiting";
+    margin-left: 10px;
+}
+
+.injail {
+    position: absolute;
+    top: 80px;
+    right: 0px;
+    border: 1px solid black;
     width: 80%;
     height: 20px;
+    display: flex;
+    flex-direction: row;
 }
 
-div.spotp {
+.injail:after {
+    position: absolute;
+    z-index: -1;
+    content: "In Jail";
+    margin-left: 20px;
+}
+
+.spotp {
     width: 95%;
     height: 30px;
     display: flex;
     flex-direction: row;
 }
 
-div.spotc {
+.spotc {
     width: 95%;
     height: 20px;
     display: flex;

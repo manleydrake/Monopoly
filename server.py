@@ -81,27 +81,25 @@ def start():
 def roll():
     if players.index(request.sid) != GAME.current_player:
         return
-    player = 'Player'+str(players.index(request.sid)+1)
     is_movement = GAME.turn_stage == 'move'
-    roll_int, die_file_1, die_file_2, space, in_jail = GAME.roll_dice()
-    message = player+' rolled '+str(roll_int)
-    emit('roll result', {'user_name': ANNOUNCEMENT, 'message': message,
-                         'die_file_1': die_file_1, 'die_file_2': die_file_2, 'roll_int': roll_int}, broadcast=True)
+    roll_int, die_file_1, die_file_2, space, in_jail, purchased_space, messages = GAME.roll_dice()
+    emit('roll result', {'die_file_1': die_file_1, 'die_file_2': die_file_2, 'roll_int': roll_int}, broadcast=True)
     if is_movement:
         move_piece(request.sid, space, in_jail)
+    if purchased_space:
+        purchase(request.sid, space)
+    for message in messages:
+        if message[-1] == '~':
+            emit('new chat', {'user_name': '', 'message': message[:-1]}, broadcast=True)
+        else:
+            handle_chat({'user_name': ANNOUNCEMENT, 'message': message})
+    update_money()
 
 
 def move_piece(user_id, space, in_jail):
     player = 'Player'+str(players.index(user_id)+1)
     color = COLORS[players.index(user_id)]
-    location = GAME.BOARD[space].name
-    if in_jail:
-        message = player+' is In Jail!'
-    else:
-        message = player+' landed on '+location
     emit('move piece', {'player': player, 'space': space, 'color': color, 'in_jail': in_jail}, broadcast=True)
-    emit('new chat', {'user_name': ANNOUNCEMENT, 'message': message}, broadcast=True)
-    update_money()
 
 
 def update_money():
@@ -117,29 +115,47 @@ def update_money():
 def chance():
     if players.index(request.sid) != GAME.current_player or GAME.turn_stage != 'chance':
         return
-    chance_card, player_position, in_jail = GAME.chance()
+    chance_card, player_position, in_jail, purchased_space, messages = GAME.chance()
     emit('chance result', {'card_content': chance_card[0]}, broadcast=True)
     if chance_card[1] in ['go to space', 'go to jail', 'movement']:
         move_piece(request.sid, player_position, in_jail)
-    else:
-        update_money()
+    if purchased_space:
+        purchase(request.sid, player_position)
+    for message in messages:
+        if message[-1] == '~':
+            emit('new chat', {'user_name': '', 'message': message[:-1]}, broadcast=True)
+        else:
+            handle_chat({'user_name': ANNOUNCEMENT, 'message': message})
+    update_money()
 
 
 @SOCKETIO.on('community chest')
 def community_chest():
     if players.index(request.sid) != GAME.current_player or GAME.turn_stage != 'community chest':
         return
-    comchest_card, player_position, in_jail = GAME.community_chest()
+    comchest_card, player_position, in_jail, purchased_space, messages = GAME.community_chest()
     emit('community chest result', {'card_content': comchest_card[0]}, broadcast=True)
     if comchest_card[1] in ['go to space', 'go to jail']:
         move_piece(request.sid, player_position, in_jail)
-    else:
-        update_money()
+    if purchased_space:
+        purchase(request.sid, player_position)
+    for message in messages:
+        if message[-1] == '~':
+            emit('new chat', {'user_name': '', 'message': message[:-1]}, broadcast=True)
+        else:
+            handle_chat({'user_name': ANNOUNCEMENT, 'message': message})
+    update_money()
+
+
+def purchase(user_id, space):
+    player_index = players.index(user_id)
+    color = COLORS[player_index]
+    emit('purchase', {'space': space, 'color': color}, broadcast=True)
 
 
 @SOCKETIO.on('pay')
 def pay(data):
-    some_result = monopoly_game.pay(data.amount, data.payer, data.recipient)
+    some_result = GAME.pay(data.amount, data.payer, data.recipient)
     """ TODO emit the result to the users """
     return some_result
 

@@ -17,10 +17,8 @@ socket.on('connect', function() {
 
 socket.on('new chat', function(msg) {
     console.log(msg);
-    if(typeof msg.user_name !== 'undefined') {
-        $('div.message-holder').append('<div class="message"><b style="color: '+msg.color+'">'+msg.user_name+'</b> '+msg.message+'</div>');
-        $('div.message-holder').scrollTop($(document).height());
-    }
+    $('div.message-holder').append('<div class="message"><b style="color: '+msg.color+'">'+msg.user_name+'</b> '+msg.message+'</div>');
+    $('div.message-holder').scrollTop(function() { return this.scrollHeight; });
 });
 
 socket.on('user connect', function(data) {
@@ -29,7 +27,7 @@ socket.on('user connect', function(data) {
         user_color = data.player_color;
     }
     $('div.message-holder').append('<div class="message"><b style="color: #000">'+data.user_name+'</b> '+data.message+'</div>');
-    $('div.message-holder').scrollTop($(document).height());
+    $('div.message-holder').scrollTop(function() { return this.scrollHeight; });
 });
 
 socket.on('session full', function() {
@@ -88,11 +86,8 @@ socket.on('update money', function(json) {
 
 
 socket.on('roll result', function(json) {
-    console.log('Roll result: ' + json.roll_int);
     $('img.Die-1').replaceWith('<img src="' + json.die_file_1 + '" class="Die-1" width="50" height="50">');
     $('img.Die-2').replaceWith('<img src="' + json.die_file_2 + '" class="Die-2" width="50" height="50">');
-    $('div.message-holder').append('<div class="message"><b style="color: #000">'+json.user_name+'</b> '+json.message+'</div>');
-    $('div.message-holder').scrollTop($(document).height());
 });
 
 socket.on('chance result', function(json){
@@ -116,4 +111,9 @@ socket.on('move piece', function(json){
         $('#cell'+json.space+' > div.spotc').append('<div class="'+json.player+'-piece gamePiece" style="background-color: '+json.color+'"></div>');
         $('#cell'+json.space+' > div.visit').append('<div class="'+json.player+'-piece gamePiece" style="background-color: '+json.color+'"></div>');
     }
+});
+
+socket.on('purchase', function(json){
+    $('#cell'+json.space).css('border-color', json.color);
+    $('#cell'+json.space).css('border-width', 'medium');
 });
