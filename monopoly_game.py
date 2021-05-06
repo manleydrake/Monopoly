@@ -66,7 +66,7 @@ class Game:
         self.current_player += 1
         if self.current_player == len(self.PLAYERS):
             self.current_player = 0
-        return 'Player'+str(self.current_player+1)+'\'s Turn!~'
+        return '-----Player'+str(self.current_player+1)+'\'s Turn!-----~'
 
     @staticmethod
     def pay(amount, payer, recipient):
@@ -314,3 +314,14 @@ class Game:
                 cost = space.house_multipliers[space.num_houses]
                 messages.append(self.pay(cost, player, owner))
         return purchase_made, messages
+
+    def reset(self):
+        self.BOARD = []
+        self.PLAYERS = []
+        self.CHANCE = []
+        self.COM_CHEST = []
+
+        self.turn_stage = None
+        self.current_player = None
+        self.latest_roll = 0
+        self.doubles = False

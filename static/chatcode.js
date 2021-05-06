@@ -42,9 +42,9 @@ $('button.start-button').on('click', function(e) {
 });
 
 socket.on('start game', function(data) {
-    $('button.start-button').replaceWith('<div class="card-container"></div>'+
+    $('button.start-button').replaceWith('<div class="cards"><div class="card-container"></div>'+
         '<button type="button" class="chance-button">Draw chance</button>'+
-        '<button type="button" class="community-chest-button">Draw community chest</button>'+
+        '<button type="button" class="community-chest-button">Draw community chest</button></div>'+
         '<!-- dice roll button and display --><div class="dice"><div class="dice-image-holder">'+
         '<img src="/static/Images/dice_1.png" class="Die-1" width="50" height="50">'+
         '<img src="/static/Images/dice_1.png" class="Die-2" width="50" height="50"></div>'+
@@ -115,5 +115,4 @@ socket.on('move piece', function(json){
 
 socket.on('purchase', function(json){
     $('#cell'+json.space).css('border-color', json.color);
-    $('#cell'+json.space).css('border-width', 'medium');
 });

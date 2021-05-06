@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from flask_socketio import emit, SocketIO
+from flask_socketio import disconnect, emit, SocketIO
 import monopoly_game
 
 SERVER = Flask(__name__)
@@ -45,15 +45,22 @@ def connect():
 
 
 @SOCKETIO.on('disconnect')
-def disconnect():
+def handle_disconnect():
     # Method to handle disconnect events
-    # Frees up a space in the game and removes the old user from the list of players
+    # Ends the current game context and refreshes the server
     if request.sid in players:
         user_number = players.index(request.sid)
         user = 'Player'+str(user_number+1)
         print(user+' disconnected')
-        emit('new chat', {'user_name': ANNOUNCEMENT, 'message': user+' disconnected'}, broadcast=True)
+        emit('new chat', {'user_name': ANNOUNCEMENT,
+                          'message': user+' disconnected. Please refresh to start a new game.'}, broadcast=True)
         players[user_number] = None
+        for i in range(len(players)):
+            if players[i] is not None:
+                user_id = players[i]
+                players[i] = None
+                disconnect(sid=user_id)
+        GAME.reset()
     print('disconnect confirmed')
 
 
@@ -105,10 +112,10 @@ def move_piece(user_id, space, in_jail):
 def update_money():
     user_names = []
     money = []
-    for i in range(len(GAME.PLAYERS)):
-        user_names.append('Player'+str(i+1))
-        money.append(GAME.PLAYERS[i].money)
-    emit('update money', {'players': user_names, 'money': money})
+    for player in GAME.PLAYERS:
+        user_names.append(player.name)
+        money.append(player.money)
+    emit('update money', {'players': user_names, 'money': money}, broadcast=True)
 
 
 @SOCKETIO.on('chance')

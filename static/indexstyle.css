@@ -301,6 +301,22 @@ b {
     width: 20%;
     height: 30%;
     margin-top: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+.cards {
+    margin-left: 8%
+}
+
+.dice {
+    margin-left: 33%;
+}
+
+.dice-button {
+    margin-left: 8%;
 }
 
 .gamePiece {
