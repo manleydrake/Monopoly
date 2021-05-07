@@ -47,11 +47,11 @@ class Game:
             self.PLAYERS.append(Player('Player'+str(i+1)))
 
     def set_chance(self):
-        self.CHANCE = get_chance()
+        self.CHANCE = list(get_chance())
         shuffle(self.CHANCE)
 
     def set_com_chest(self):
-        self.COM_CHEST = get_community_chest()
+        self.COM_CHEST = list(get_community_chest())
         shuffle(self.COM_CHEST)
 
     def start_game(self, players):
@@ -160,14 +160,14 @@ class Game:
 
     def chance(self):
         card = self.CHANCE.pop()
-        if len(self.CHANCE) == 0:
+        if not self.CHANCE:
             self.set_chance()
         player_position, in_jail, purchased_space, messages = self.enact_card(card)
         return card, player_position, in_jail, purchased_space, messages
 
     def community_chest(self):
         card = self.COM_CHEST.pop()
-        if len(self.COM_CHEST) == 0:
+        if not self.COM_CHEST:
             self.set_com_chest()
         player_position, in_jail, purchased_space, messages = self.enact_card(card)
         return card, player_position, in_jail, purchased_space, messages
