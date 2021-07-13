@@ -294,6 +294,7 @@ b {
 }
 /* Player Stat and money End*/
 
+/* Players pieces, card, and dices display Start*/
 .game-display {
     z-index: 2;
     position: absolute;
@@ -324,3 +325,4 @@ b {
     width: 20px;
     height: 20px;
 }
+/* Players pieces, card, and dices display End*/
